@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/new/icons">
+        <file>images/remove-dir.png</file>
+        <file>images/new-dir.png</file>
+        <file>images/forward-arrow.png</file>
+        <file>images/backward-arrow.png</file>
+        <file>images/copy.png</file>
+        <file>images/delete-file.png</file>
+        <file>images/move-file.png</file>
+    </qresource>
+</RCC>
