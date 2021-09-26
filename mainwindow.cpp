@@ -21,22 +21,27 @@ void MainWindow::init()
   ui->treeView->setModel(m_fsModel);
   ui->listView->setModel(m_fsModel);
   ui->listView->setViewMode(QListView::ViewMode::ListMode);
-  this->setWindowTitle("File Manager");
+  setWindowTitle("File Manager");
+
+  m_msg = UserMessages::instance(this);
 }
 
 QSharedPointer<QModelIndex> MainWindow::getCurrentIndexForSelectedDir()
 {
   QModelIndex currentIndex = ui->listView->currentIndex();
+  QString isNotDirError = m_msg->readData("Error_Is_Not_Dir").toString();
+  QString noSelectedError = m_msg->readData("Error_Nothing_Selected").toString();
+  QString errorTitle = m_msg->readData("Error_Title").toString();
 
   if (!m_fsModel->isDir(currentIndex))
   {
-    QMessageBox::information(this, "Error", "selected item is not a directory");
+    QMessageBox::information(this, errorTitle, isNotDirError);
     return nullptr;
   }
 
   if (!currentIndex.isValid())
   {
-    QMessageBox::information(this, "Error", "No selected item");
+    QMessageBox::information(this, errorTitle, noSelectedError);
     return nullptr;
   }
 
@@ -47,10 +52,12 @@ QSharedPointer<QModelIndex> MainWindow::getCurrentIndexForSelectedDir()
 QSharedPointer<QModelIndex> MainWindow::getCurrentIndexForAnySelected()
 {
   QModelIndex currentIndex = ui->listView->currentIndex();
+  QString errorTitle = m_msg->readData("Error_Title").toString();
+  QString noSelectedError = m_msg->readData("Error_Nothing_Selected").toString();
 
   if (!currentIndex.isValid())
   {
-    QMessageBox::information(this, "Error", "No selected item");
+    QMessageBox::information(this, errorTitle, noSelectedError);
     return nullptr;
   }
 
@@ -75,13 +82,17 @@ void MainWindow::on_listView_activated(const QModelIndex& index)
 void MainWindow::on_actionNew_Directory_triggered()
 {
   bool ok;
-  QString dirName = QInputDialog::getText(this, tr("Fill the box"),
-                                          tr("User name:"), QLineEdit::Normal,
+  QString inputDialogTitle = m_msg->readData("Input_Dialog_Title").toString();
+  QString inputDialogFiledName = m_msg->readData("Input_Dialog_Give_A_Name").toString();
+  QString errorTitle = m_msg->readData("Error_Title").toString();
+  QString errorGiveName = m_msg->readData("Error_No_Name").toString();
+  QString dirName = QInputDialog::getText(this, inputDialogTitle,
+                                          inputDialogFiledName, QLineEdit::Normal,
                                           QDir::home().dirName(), &ok);
 
   if (!ok || dirName.isEmpty())
   {
-    QMessageBox::information(this, "Error", "Give a name for wanted directory");
+    QMessageBox::information(this, errorTitle, errorGiveName);
     return;
   }
 
@@ -135,6 +146,10 @@ void MainWindow::on_actionforward_triggered()
 void MainWindow::on_actionMove_File_triggered()
 {
   QSharedPointer<QModelIndex> sourceIndex = getCurrentIndexForAnySelected();
+  QString infoTitle = m_msg->readData("Info_Title").toString();
+  QString errorTitle = m_msg->readData("Error_Title").toString();
+  QString inputDialogCancel = m_msg->readData("Input_Dialog_Cancel").toString();
+  QString errorCouldNotMove = m_msg->readData("Error_Could_Not_Move").toString();
 
   if (sourceIndex == nullptr)
     return;
@@ -149,7 +164,7 @@ void MainWindow::on_actionMove_File_triggered()
 
   if (!desitantionIndex.isValid())
   {
-    QMessageBox::information(this, "Info", "Canceled the job");
+    QMessageBox::information(this, infoTitle, inputDialogCancel);
     return;
   }
 
@@ -162,7 +177,7 @@ void MainWindow::on_actionMove_File_triggered()
 
   if (!ok)
   {
-    QMessageBox::critical(this, "Error", "Could not perform the action");
+    QMessageBox::critical(this, errorTitle, errorCouldNotMove);
     return;
   }
 
@@ -173,6 +188,10 @@ void MainWindow::on_actionMove_File_triggered()
 void MainWindow::on_actionCopy_File_triggered()
 {
   QSharedPointer<QModelIndex> sourceIndex = getCurrentIndexForAnySelected();
+  QString infoTitle = m_msg->readData("Info_Title").toString();
+  QString errorTitle = m_msg->readData("Error_Title").toString();
+  QString inputDialogCancel = m_msg->readData("Input_Dialog_Cancel").toString();
+  QString errorCouldNotCopy = m_msg->readData("Error_Could_Not_Copy").toString();
 
   if (sourceIndex == nullptr)
     return;
@@ -186,7 +205,7 @@ void MainWindow::on_actionCopy_File_triggered()
 
   if (!desitantionIndex.isValid())
   {
-    QMessageBox::information(this, "Info", "Canceled the job");
+    QMessageBox::information(this, infoTitle, inputDialogCancel);
     return;
   }
 
@@ -199,7 +218,7 @@ void MainWindow::on_actionCopy_File_triggered()
 
   if (!ok)
   {
-    QMessageBox::critical(this, "Error", "Could not perform the action");
+    QMessageBox::critical(this, errorTitle, errorCouldNotCopy);
     return;
   }
 
@@ -210,6 +229,8 @@ void MainWindow::on_actionCopy_File_triggered()
 void MainWindow::on_actionDelete_File_triggered()
 {
   QSharedPointer<QModelIndex> sourceIndex = getCurrentIndexForAnySelected();
+  QString errorTitle = m_msg->readData("Error_Title").toString();
+  QString errorCouldNotRemove = m_msg->readData("Error_Could_Not_Remove").toString();
 
   if (sourceIndex == nullptr)
     return;
@@ -220,7 +241,7 @@ void MainWindow::on_actionDelete_File_triggered()
 
   if (!ok)
   {
-    QMessageBox::critical(this, "Error", "Could not perform the action");
+    QMessageBox::critical(this, errorTitle, errorCouldNotRemove);
     return;
   }
 

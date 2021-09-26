@@ -1,0 +1,13 @@
+{
+    "Error_Title": "Error",
+    "Info_Title": "Information",
+    "Error_Is_Not_Dir": "Selected item is not a directory",
+    "Error_Nothing_Selected": "There are nothing selected",
+    "Error_No_Name": "Give a name for wanted directory",
+    "Error_Could_Not_Move": "Could not perform the action",
+    "Error_Could_Not_Copy": "Could not perform the action",
+    "Error_Could_Not_Remove": "Could not perform the action",
+    "Input_Dialog_Title": "Fill the box",
+    "Input_Dialog_Give_A_Name": "Directory name",
+    "Input_Dialog_Cancel": "Canceled the job"
+}

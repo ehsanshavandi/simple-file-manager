@@ -11,11 +11,13 @@ CONFIG += c++11
 SOURCES += \
     filepath.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    messages.cpp
 
 HEADERS += \
     filepath.h \
-    mainwindow.h
+    mainwindow.h \
+    messages.h
 
 FORMS += \
     filepath.ui \
@@ -28,3 +30,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources.qrc
+
+DISTFILES += \
+    messages.json

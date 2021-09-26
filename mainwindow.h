@@ -10,6 +10,7 @@
 #include <QInputDialog>
 #include <QSharedPointer>
 #include "filepath.h"
+#include "messages.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -40,6 +41,7 @@ class MainWindow : public QMainWindow {
 
   QDir m_dir;
   QFileSystemModel* m_fsModel;
+  UserMessages* m_msg;
 
   void init();
   QSharedPointer<QModelIndex> getCurrentIndexForSelectedDir();

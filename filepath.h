@@ -24,9 +24,7 @@ class FilePath : public QDialog {
 
  private slots:
   void on_buttonBox_rejected();
-
   void on_treeView_activated(const QModelIndex& index);
-
   void on_buttonBox_accepted();
 
  private:
