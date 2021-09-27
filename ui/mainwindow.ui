@@ -72,8 +72,8 @@
   </widget>
   <action name="actionNew_Directory">
    <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/new/icons/images/new-dir.png</normaloff>:/new/icons/images/new-dir.png</iconset>
+    <iconset resource="../resources.qrc">
+     <normaloff>:/new/icons/res/images/new-dir.png</normaloff>:/new/icons/res/images/new-dir.png</iconset>
    </property>
    <property name="text">
     <string>New Directory</string>
@@ -84,8 +84,8 @@
   </action>
   <action name="actionRemove_Directory">
    <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/new/icons/images/remove-dir.png</normaloff>:/new/icons/images/remove-dir.png</iconset>
+    <iconset resource="../resources.qrc">
+     <normaloff>:/new/icons/res/images/remove-dir.png</normaloff>:/new/icons/res/images/remove-dir.png</iconset>
    </property>
    <property name="text">
     <string>Remove Directory</string>
@@ -96,8 +96,8 @@
   </action>
   <action name="actionback">
    <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/new/icons/images/backward-arrow.png</normaloff>:/new/icons/images/backward-arrow.png</iconset>
+    <iconset resource="../resources.qrc">
+     <normaloff>:/new/icons/res/images/backward-arrow.png</normaloff>:/new/icons/res/images/backward-arrow.png</iconset>
    </property>
    <property name="text">
     <string>back</string>
@@ -105,8 +105,8 @@
   </action>
   <action name="actionforward">
    <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/new/icons/images/forward-arrow.png</normaloff>:/new/icons/images/forward-arrow.png</iconset>
+    <iconset resource="../resources.qrc">
+     <normaloff>:/new/icons/res/images/forward-arrow.png</normaloff>:/new/icons/res/images/forward-arrow.png</iconset>
    </property>
    <property name="text">
     <string>forward</string>
@@ -114,8 +114,8 @@
   </action>
   <action name="actionMove_File">
    <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/new/icons/images/move-file.png</normaloff>:/new/icons/images/move-file.png</iconset>
+    <iconset resource="../resources.qrc">
+     <normaloff>:/new/icons/res/images/move-file.png</normaloff>:/new/icons/res/images/move-file.png</iconset>
    </property>
    <property name="text">
     <string>Move File</string>
@@ -123,8 +123,8 @@
   </action>
   <action name="actionCopy_File">
    <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/new/icons/images/copy.png</normaloff>:/new/icons/images/copy.png</iconset>
+    <iconset resource="../resources.qrc">
+     <normaloff>:/new/icons/res/images/copy.png</normaloff>:/new/icons/res/images/copy.png</iconset>
    </property>
    <property name="text">
     <string>Copy File</string>
@@ -132,8 +132,8 @@
   </action>
   <action name="actionDelete_File">
    <property name="icon">
-    <iconset resource="resources.qrc">
-     <normaloff>:/new/icons/images/delete-file.png</normaloff>:/new/icons/images/delete-file.png</iconset>
+    <iconset resource="../resources.qrc">
+     <normaloff>:/new/icons/res/images/delete-file.png</normaloff>:/new/icons/res/images/delete-file.png</iconset>
    </property>
    <property name="text">
     <string>Delete File</string>
@@ -141,7 +141,7 @@
   </action>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../resources.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -22,7 +22,7 @@ class UserMessages : public QObject {
  signals:
 
  private:
-  explicit UserMessages(QObject* parent = nullptr, QString configPath = "messages.json");
+  explicit UserMessages(QObject* parent = nullptr, QString configPath = "others/messages.json");
   static UserMessages* m_instance;
   void init(QString fileName);
   QJsonObject m_config;

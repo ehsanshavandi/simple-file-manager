@@ -10,7 +10,7 @@
 #include <QInputDialog>
 #include <QSharedPointer>
 #include "filepath.h"
-#include "messages.h"
+#include "src/messages.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
