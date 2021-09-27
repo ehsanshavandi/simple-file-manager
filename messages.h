@@ -17,7 +17,8 @@ class UserMessages : public QObject {
   static UserMessages* instance(QObject* parent);
   static UserMessages* instance(QObject* parent, QString configPath);
 
-  QVariant readData(QString data);
+  QVariant readData(const QString& data);
+  QVariant readCmpxData(const QString& data);
  signals:
 
  private:

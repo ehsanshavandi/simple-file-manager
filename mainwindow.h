@@ -42,6 +42,7 @@ class MainWindow : public QMainWindow {
   QDir m_dir;
   QFileSystemModel* m_fsModel;
   UserMessages* m_msg;
+  QMap<QString, QString> m_msgMap;
 
   void init();
   QSharedPointer<QModelIndex> getCurrentIndexForSelectedDir();

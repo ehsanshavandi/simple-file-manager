@@ -25,10 +25,46 @@ UserMessages* UserMessages::instance(QObject* parent, QString configPath)
   return m_instance;
 }
 
-QVariant UserMessages::readData(QString data)
+QVariant UserMessages::readData(const QString& data)
 {
   QJsonValue value = m_config.value(QString(data));
   return value.toVariant();
+}
+
+QVariant UserMessages::readCmpxData(const QString& data)
+{
+  QStringList textList = data.split('.');
+  QString lastText = textList.last();
+
+  if (textList.size() == 1)
+    return readData(lastText);
+
+  QVector<QJsonObject> jsonObjs;
+
+  for (int i = 0; i <= textList.size() - 2; ++i)
+  {
+    if (i == 0)
+    {
+      QJsonValue value = m_config.value(textList[i]);
+      qInfo() << "value in first iterate: " << value;
+      QJsonObject objValue = value.toObject();
+      jsonObjs.push_back(objValue);
+      qInfo() << "vector at first: " << jsonObjs;
+      continue;
+    }
+
+    QJsonObject prevObj = jsonObjs.takeLast();
+    qInfo() << "prev obj: " << prevObj;
+    QJsonObject currObj = prevObj[textList[i]].toObject();
+    qInfo() << "curr obj: " << currObj;
+    jsonObjs.push_back(currObj);
+  }
+
+  QJsonObject lastObj = jsonObjs.takeLast();
+  qInfo() << "last obj: " << lastObj;
+  QJsonValue fineValue = lastObj[lastText];
+  qInfo() << "fine value: " << fineValue;
+  return fineValue.toVariant();
 }
 
 void UserMessages::init(QString fileName)
